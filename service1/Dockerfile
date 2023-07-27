@@ -1,8 +1,14 @@
-# Use the official Nginx base image
-FROM nginx:latest
+# Use a base image suitable for your application (e.g., Python, Node.js, etc.)
+FROM python:3.9
 
-# Copy your static HTML files to the appropriate Nginx directory
-COPY index.html /usr/share/nginx/html/
+# Set the working directory inside the container
+WORKDIR /app
 
-# Expose the default Nginx port
-EXPOSE 80
+# Copy the application code into the container
+COPY . /app
+
+# Install dependencies (if any)
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Specify the command to run your application
+CMD ["python", "app.py"]
