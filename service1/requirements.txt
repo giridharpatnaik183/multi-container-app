@@ -1,0 +1,4 @@
+Manually pushing images to Hub? 
+Connect your account to GitHub or Bitbucket to automatically
+build and tag new images whenever your code is updated, 
+so you can focus your time on creating.
