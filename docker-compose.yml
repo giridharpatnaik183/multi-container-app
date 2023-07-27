@@ -1,10 +1,16 @@
-version: '3'
+version: '3.8'
+
 services:
-  service1:
-    build:
-      context: ./service1
+  web-server:
+    image: nginx:latest
     ports:
-      - "8000:8000"
-  service2:
-    build:
-      context: ./service2
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+
+  db-server:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
