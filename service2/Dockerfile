@@ -5,4 +5,4 @@ FROM mysql:latest
 ENV MYSQL_ROOT_PASSWORD=root_password
 
 # Copy any SQL initialization scripts to the appropriate directory
-COPY script.js /app/
+COPY script.js
