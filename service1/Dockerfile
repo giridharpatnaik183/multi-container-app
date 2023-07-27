@@ -1,6 +1,8 @@
-FROM python:3.9
-WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-COPY . .
-CMD ["python", "app.py"]
+# Use the official Nginx base image
+FROM nginx:latest
+
+# Copy your static HTML files to the appropriate Nginx directory
+COPY ./html /usr/share/nginx/html
+
+# Expose the default Nginx port
+EXPOSE 80
