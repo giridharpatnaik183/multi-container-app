@@ -1,15 +1,8 @@
-# Use a base image suitable for your application (e.g., Node.js, etc.)
-FROM node:14
+# Use the official MySQL base image
+FROM mysql:latest
 
-# Set the working directory inside the container
-WORKDIR /app
+# Set the MySQL root password (change this to a secure password in production)
+ENV MYSQL_ROOT_PASSWORD=root_password
 
-# Copy the JavaScript files into the container (assuming you have a script.js file in service2 directory)
-COPY script.js /app/
-
-# Install dependencies (if any)
-RUN npm install
-
-# Specify the command to run your application
-CMD ["node", "script.js"]
-
+# Copy any SQL initialization scripts to the appropriate directory
+COPY ./init.sql /docker-entrypoint-initdb.d/
