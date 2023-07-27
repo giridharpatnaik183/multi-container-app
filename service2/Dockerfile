@@ -1,8 +1,14 @@
-# Use the official MySQL base image
-FROM mysql:latest
+# Use a base image suitable for your application (e.g., Node.js, etc.)
+FROM node:14
 
-# Set the MySQL root password (change this to a secure password in production)
-ENV MYSQL_ROOT_PASSWORD=root_password
+# Set the working directory inside the container
+WORKDIR /app
 
-# Copy any SQL initialization scripts to the appropriate directory
-COPY script.js
+# Copy the application code into the container
+COPY . /app
+
+# Install dependencies (if any)
+RUN npm install
+
+# Specify the command to run your application
+CMD ["node", "main.js"]
